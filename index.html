@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pipette Digest - This week's Developments in Science.</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-check.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -26,7 +27,11 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
   import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app-check.js";
 
+const appCheck = initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider('6LdQwHApAAAAAKjXIJ53Hxiv8UoVEhG6vQO6GSN_'),
+});
   const firebaseConfig = {
     apiKey: "AIzaSyDA9b6mzdKkDSKnHOxtjM8PQ26ZNtLrTqE",
     authDomain: "pipettedigest-subscription.firebaseapp.com",
@@ -58,6 +63,7 @@
       alert("Oops! Something went wrong.");
     }
   });
+
 </script>
 
 
