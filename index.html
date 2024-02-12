@@ -30,6 +30,9 @@
 
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
 
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+
   // TODO: Add SDKs for Firebase products that you want to use
 
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -66,24 +69,25 @@
 
 </script>
     <script>
-  document.getElementById('subscription-form').addEventListener('submit', (e) => {
-    e.preventDefault(); // Prevent the default form submit action
+// Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
 
+  document.getElementById('subscription-form').addEventListener('submit', async (e) => {
+    e.preventDefault(); // Prevent the default form submit action
     const email = document.getElementById('email').value; // Get the email value
 
-    // Add a new document in collection "subscriptions"
-    db.collection("subscriptions").add({
-      email: email
-    })
-    .then(() => {
+    try {
+      await addDoc(collection(db, "subscriptions"), {
+        email: email
+      });
       alert("Thank you for subscribing!");
-      // Reset the form or redirect the user
       document.getElementById('subscription-form').reset();
-    })
-    .catch((error) => {
+    } catch (error) {
       console.error("Error adding document: ", error);
       alert("Oops! Something went wrong.");
-    });
+    }
   });
 </script>
 
