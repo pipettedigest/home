@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discover the next stage of a founder's story</title>
+    <title>Pipette Digest - This week's Developments in Science.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -23,12 +23,10 @@
     </style>
 
     <script type="module">
-  // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
   import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-  // Your web app's Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyDA9b6mzdKkDSKnHOxtjM8PQ26ZNtLrTqE",
     authDomain: "pipettedigest-subscription.firebaseapp.com",
@@ -39,14 +37,11 @@
     measurementId: "G-NE67SK93KG"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   
-  // Initialize Analytics
   getAnalytics(app);
 
-  // Event listener for form submission
   document.getElementById('subscription-form').addEventListener('submit', async (e) => {
     e.preventDefault(); // Prevent the default form submit action
     const emailInput = document.getElementById('email');
