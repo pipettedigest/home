@@ -21,6 +21,73 @@
             color: #ffffff;
         }
     </style>
+
+    <script type="module">
+
+  // Import the functions you need from the SDKs you need
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+
+  // Your web app's Firebase configuration
+
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyDA9b6mzdKkDSKnHOxtjM8PQ26ZNtLrTqE",
+
+    authDomain: "pipettedigest-subscription.firebaseapp.com",
+
+    projectId: "pipettedigest-subscription",
+
+    storageBucket: "pipettedigest-subscription.appspot.com",
+
+    messagingSenderId: "940592884625",
+
+    appId: "1:940592884625:web:4639faf02108085d724830",
+
+    measurementId: "G-NE67SK93KG"
+
+  };
+
+
+  // Initialize Firebase
+
+  const app = initializeApp(firebaseConfig);
+
+  const analytics = getAnalytics(app);
+
+</script>
+    <script>
+  document.getElementById('subscription-form').addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent the default form submit action
+
+    const email = document.getElementById('email').value; // Get the email value
+
+    // Add a new document in collection "subscriptions"
+    db.collection("subscriptions").add({
+      email: email
+    })
+    .then(() => {
+      alert("Thank you for subscribing!");
+      // Reset the form or redirect the user
+      document.getElementById('subscription-form').reset();
+    })
+    .catch((error) => {
+      console.error("Error adding document: ", error);
+      alert("Oops! Something went wrong.");
+    });
+  });
+</script>
+
+    
 </head>
 <body>
     <div class="menu">
@@ -44,29 +111,6 @@
             <br /><p class="mt-4 mr-6 text-lg"><i>Created at the University of Toronto by NEXN Industries, LLC.</i></p>
         </div>
     </div>
-
-    <script>
-        document.getElementById('subscription-form').addEventListener('submit', function(e) {
-          e.preventDefault(); // Prevents the default form submission
-          var email = document.getElementById('email').value; // Get the email value
-          fetch('https://script.google.com/macros/s/AKfycbxhc6twodBcrZ9-2goZW34DMaYxaZ2howk2gKCaFfDO3IFpVIVVXWHdY-3AAD0f1adO/exec', {
-              method: 'POST',
-              mode: 'no-cors', // This will prevent the CORS preflight check
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({email: email})
-          })
-          .then(response => {
-              console.log('Success:', response);
-              alert('Subscription successful!');
-          })
-          .catch(error => {
-              console.error('Error:', error);
-              alert('An error occurred. Please try again later.');
-          });
-        });
-
-    </script>
+    
 </body>
 </html>
