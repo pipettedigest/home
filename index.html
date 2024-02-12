@@ -47,25 +47,26 @@
 
     <script>
         document.getElementById('subscription-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevents the default form submission
-            var email = document.getElementById('email').value; // Get the email value
-            fetch('https://script.google.com/macros/s/AKfycbwukAxWbmg9xgJ9VBG768ENfYTL2JqNYN7Ob4H4gtKOFx-WGDCNakcOWvEviCauVPTR/exec', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({email: email})
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                alert('Subscription successful!');
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again later.');
-            });
+          e.preventDefault(); // Prevents the default form submission
+          var email = document.getElementById('email').value; // Get the email value
+          fetch('https://script.google.com/macros/s/AKfycbxhc6twodBcrZ9-2goZW34DMaYxaZ2howk2gKCaFfDO3IFpVIVVXWHdY-3AAD0f1adO/exec', {
+              method: 'POST',
+              mode: 'no-cors', // This will prevent the CORS preflight check
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({email: email})
+          })
+          .then(response => {
+              console.log('Success:', response);
+              alert('Subscription successful!');
+          })
+          .catch(error => {
+              console.error('Error:', error);
+              alert('An error occurred. Please try again later.');
+          });
         });
+
     </script>
 </body>
 </html>
