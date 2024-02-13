@@ -27,7 +27,7 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
   import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-  import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app-check.js";
+  import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app-check.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyDA9b6mzdKkDSKnHOxtjM8PQ26ZNtLrTqE",
@@ -41,12 +41,12 @@
 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
-  
+
   getAnalytics(app);
-        
-const appCheck = initializeAppCheck(app, {
+  const appCheck = initializeAppCheck(app, {
     provider: new ReCaptchaV3Provider('6LdQwHApAAAAAKjXIJ53Hxiv8UoVEhG6vQO6GSN_'),
 });
+
 
 
   document.getElementById('subscription-form').addEventListener('submit', async (e) => {
