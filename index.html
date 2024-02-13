@@ -6,6 +6,7 @@
     <title>Pipette Digest - This week's Developments in Science.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-check.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -48,6 +49,9 @@
 });
 
 
+function onSubmit(token) {
+     document.getElementById("subscription-form").submit();
+}
 
   document.getElementById('subscription-form').addEventListener('submit', async (e) => {
     e.preventDefault(); // Prevent the default form submit action
@@ -83,9 +87,11 @@
             We scour through high-impact journals, rank and summarize research papers released in the last 7 days, and deliver them to you weekly.
         </p><br />
         <p>Stay ahead with developments in the field today.</p>
+
         <form id="subscription-form">
             <input type="email" id="email" placeholder="Enter your email" class="text-black mb-4 p-2 rounded">
-            <button type="submit" class="bg-yellow-400 text-black px-6 py-2 rounded font-bold">Subscribe</button>
+            <button type="submit" class="bg-yellow-400 text-black px-6 py-2 rounded font-bold g-recaptcha" data-sitekey="6LdQwHApAAAAAKjXIJ53Hxiv8UoVEhG6vQO6GSN_" data-callback="onSubmit">Subscribe</button>
+        
         </form>
         <p><b>Every Saturday. No spam, we promise.</b></p>
         <div class="flex flex-wrap mt-10">
