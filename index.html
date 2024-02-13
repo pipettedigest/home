@@ -29,9 +29,6 @@
   import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
   import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app-check.js";
 
-const appCheck = initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider('6LdQwHApAAAAAKjXIJ53Hxiv8UoVEhG6vQO6GSN_'),
-});
   const firebaseConfig = {
     apiKey: "AIzaSyDA9b6mzdKkDSKnHOxtjM8PQ26ZNtLrTqE",
     authDomain: "pipettedigest-subscription.firebaseapp.com",
@@ -46,6 +43,11 @@ const appCheck = initializeAppCheck(app, {
   const db = getFirestore(app);
   
   getAnalytics(app);
+        
+const appCheck = initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider('6LdQwHApAAAAAKjXIJ53Hxiv8UoVEhG6vQO6GSN_'),
+});
+
 
   document.getElementById('subscription-form').addEventListener('submit', async (e) => {
     e.preventDefault(); // Prevent the default form submit action
