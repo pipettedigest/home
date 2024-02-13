@@ -49,10 +49,6 @@
 });
 
 
-function onSubmit(token) {
-     document.getElementById("subscription-form").submit();
-}
-
   document.getElementById('subscription-form').addEventListener('submit', async (e) => {
     e.preventDefault(); // Prevent the default form submit action
     const emailInput = document.getElementById('email');
@@ -69,6 +65,7 @@ function onSubmit(token) {
       alert("Oops! Something went wrong.");
     }
   });
+
 
 </script>
 
@@ -93,6 +90,12 @@ function onSubmit(token) {
             <button class="bg-yellow-400 text-black px-6 py-2 rounded font-bold g-recaptcha" data-sitekey="6LdQwHApAAAAAKjXIJ53Hxiv8UoVEhG6vQO6GSN_" data-callback="onSubmit" data-action='submit'>Subscribe</button>
         
         </form>
+<script>
+   function onSubmit(token) {
+     document.getElementById("demo-form").submit();
+   }
+</script>
+
         <p><b>Every Saturday. No spam, we promise.</b></p>
         <div class="flex flex-wrap mt-10">
             <a href="methodology.html" class="mt-4 mr-6 text-lg">Our Methodology</a>
